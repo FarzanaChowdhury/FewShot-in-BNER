@@ -424,8 +424,8 @@ class FewShotNERFramework:
                 correct_cnt += correct
                 iter_sample += 1
                 if (it + 1) % 100 == 0 or (it + 1) % val_step == 0:
-                    precision = correct_cnt / pred_cnt
-                    recall = correct_cnt / label_cnt
+                    precision = correct_cnt / pred_cnt if pred_cnt != 0 else 0
+                    recall = correct_cnt / label_cnt if label_cnt != 0 else 0
                     if precision+recall==0:
                       f1=0
                     else:
